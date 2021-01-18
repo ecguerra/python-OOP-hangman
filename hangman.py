@@ -45,7 +45,7 @@ class Game():
         self.current_word = None
         self.user_input = None
         self.game_over = False
-        self.word_bank = ['swing','liver','diamond','cower','dynamic','combination','tasty','conductor']
+        self.word_bank = ['swing','liver','diamond','cower','dynamic','combination','tasty','conductor','contradiction','prestige','satellite','unanimous','recruitment']
     
     def get_word(self):
         self.word_index = random.randint(0,len(self.word_bank)-1)
@@ -77,16 +77,17 @@ class Game():
         else :
             if self.game_word.check_word():
                 self.game_over = True
-                print('You win!')
+                print('Congratulations! You win!')
             else: 
                 return
 
 
 # Stretch Goals:
     # ability to restart
+    # ability to quit
     # stretch goal: words with spaces and non-letter characters (-, ', etc)
     # if making front-end piece: random words API
-    
+
 
 new_game = Game()
 new_game.start_game()
