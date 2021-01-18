@@ -45,9 +45,7 @@ class Game():
         self.current_word = None
         self.user_input = None
         self.game_over = False
-        # if I were making this a 'real' game I'd do an api call for random words instead
         self.word_bank = ['swing','liver','diamond','cower','dynamic','combination','tasty','conductor']
-        # stretch goal: words with spaces and non-letter characters (-, ', etc)
     
     def get_word(self):
         self.word_index = random.randint(0,len(self.word_bank)-1)
@@ -83,22 +81,13 @@ class Game():
             else: 
                 return
 
-        # ability to restart
 
+# Stretch Goals:
+    # ability to restart
+    # stretch goal: words with spaces and non-letter characters (-, ', etc)
+    # if making front-end piece: random words API
+    
 
+new_game = Game()
+new_game.start_game()
 
-# test = Word('cabbage')
-# print(test.word_info)
-# print(test.check_letter('a'))
-# print(test.check_letter('d'))
-# test.print_word()
-# print('wrong guesses remaining: ', test.wrong_answers)
-# print('Letters guessed: ', set(test.guessed_letters))
-
-test_game = Game()
-
-test_game.start_game()
-# print(test_game.current_word)
-# print(test_game.game_word.word_info)
-
-# print('Type something', end=": ")
