@@ -13,17 +13,17 @@ class Word():
             self.word_info.append(letter_info)
 
     def check_letter(self, letter):
-        # update to allow for upper and lowercase guesses
-        self.guessed_letters.append(letter)
-        # add something if they repeat a letter
-        if letter in self.word:
-            # return 'yes!'
+        if letter.lower() in self.guessed_letters:
+            print('You already guessed that letter! Try again')
+            return
+        self.guessed_letters.append(letter.lower())
+        if letter.lower() in self.word:
             for i in self.word_info:
-                if letter == i['letter']:
+                if letter.lower() == i['letter']:
                     i['guessed'] = True    
         else:
             self.wrong_answers -= 1
-            # return 'Sorry, that\'s not in the word!'
+            print('Sorry, that\'s not in the word!')
 
     def print_word(self):
         for i in self.word_info:
@@ -39,8 +39,8 @@ class Game():
         self.user_input = None
         self.game_over = False
         # if I were making this a 'real' game I'd do an api call for random words instead
-        # stretch goal: words with spaces and non-letter characters (-, ', etc)
         self.word_bank = ['swing','liver','diamond','cower','dynamic','combination','tasty','conductor']
+        # stretch goal: words with spaces and non-letter characters (-, ', etc)
     
     def get_word(self):
         self.word_index = random.randint(0,len(self.word_bank)-1)
@@ -66,16 +66,31 @@ class Game():
             self.game_play()
         
     def game_end(self):
-        # loss conditions
         if self.game_word.wrong_answers == 0:
             self.game_over = True
             print('Game Over! The word was', self.game_word.word)
         else :
             for i in self.game_word.word_info:
-                if i['guessed'] == True:
-                    next()
-                else:
-                    return
+            #     for key in i.keys():
+            #         if key == 'guessed':
+            #             print(key)
+                # for val in i.values():
+                #     print(val)
+                if all(i.values()):
+                    print('yay')
+                #     if val == False:
+                #         print(val)
+            #     print(i.values())
+                # if False in i.values():
+                #     return
+                # else:
+                #     print('You win!')
+                # if i['guessed'] == True:
+                # if all(i.values()):
+                    # next(i)
+                    # print('Congratulations! You win!')
+                # else:
+                    # return
 
                     # self.game_over = True
                     # print('Congratulations! You win!')
@@ -86,7 +101,7 @@ class Game():
 
         # win conditions
         # need to check that ['guessed'] on each letter is True/not False
-        # what's the forEach function in python? lol
+        # what's the forEach function in python?
 
         # ability to restart
 
