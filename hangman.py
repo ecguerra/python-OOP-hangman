@@ -32,6 +32,13 @@ class Word():
             else:
                 print('_', end=' ')
         print()
+    
+    def check_word(self):
+        for i in self.word_info:
+            if not i['guessed']:
+                return False
+        return True
+
 
 class Game():
     def __init__(self):
@@ -70,38 +77,11 @@ class Game():
             self.game_over = True
             print('Game Over! The word was', self.game_word.word)
         else :
-            for i in self.game_word.word_info:
-            #     for key in i.keys():
-            #         if key == 'guessed':
-            #             print(key)
-                # for val in i.values():
-                #     print(val)
-                if all(i.values()):
-                    print('yay')
-                #     if val == False:
-                #         print(val)
-            #     print(i.values())
-                # if False in i.values():
-                #     return
-                # else:
-                #     print('You win!')
-                # if i['guessed'] == True:
-                # if all(i.values()):
-                    # next(i)
-                    # print('Congratulations! You win!')
-                # else:
-                    # return
-
-                    # self.game_over = True
-                    # print('Congratulations! You win!')
-
-                # if all(i['guessed']==True):
-                #     self.game_over = True
-                #     print('Congratulations! You win!')
-
-        # win conditions
-        # need to check that ['guessed'] on each letter is True/not False
-        # what's the forEach function in python?
+            if self.game_word.check_word():
+                self.game_over = True
+                print('You win!')
+            else: 
+                return
 
         # ability to restart
 
